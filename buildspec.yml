@@ -1,14 +1,24 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      # Install the AWS CLI using the appropriate package manager
+      - apt-get update                    # For Debian/Ubuntu-based systems
+      - apt-get install -y awscli         # For Debian/Ubuntu-based systems
+
   build:
     commands:
-    - echo "This is build phase... Zipping my lambda function"
-    - zip -r deployment_package.zip lambda_function.py
+      - echo "This is build phase... Zipping my lambda function"
+      - zip -r deployment_package.zip lambda_function.py
+
   post_build:
     commands:
-    - echo "Deploying to the Lambda"
-    - aws lambda update-function-code --function-name  hello_world --zip-file fileb://deployment_package.zip
+      - echo "Deploying to the Lambda"
+      - aws lambda update-function-code --function-name Hello_world --zip-file fileb://deployment_package.zip
+
 artifacts:
   type: zip
   paths:
