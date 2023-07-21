@@ -3,17 +3,18 @@ version: 0.2
 env:
   variables:
     AWS_DEFAULT_REGION: "us-east-1"
+
 phases:
   pre_build:
     commands:
       - echo "Setting up custom environment..."
       - amazon-linux-extras enable python3.8
-      - yum clean metadata
-      - yum install -y python3.8
+      - yum install -y python3.8 zip
   build:
     commands:
-      - echo "This is build phase... Zipping my lambda function"
+      - echo "This is the build phase... Zipping my lambda function"
       - zip -r deployment_package.zip lambda_function.py
+
 artifacts:
   files:
     - deployment_package.zip
