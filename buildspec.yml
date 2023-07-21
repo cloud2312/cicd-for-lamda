@@ -1,9 +1,8 @@
-vversion: 0.2
+version: 0.2
 
 env:
   variables:
     AWS_DEFAULT_REGION: "us-east-1"
-
 phases:
   pre_build:
     commands:
@@ -15,7 +14,6 @@ phases:
     commands:
       - echo "This is build phase... Zipping my lambda function"
       - zip -r deployment_package.zip lambda_function.py
-
 artifacts:
   files:
     - deployment_package.zip
