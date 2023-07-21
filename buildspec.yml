@@ -1,13 +1,18 @@
 version: 0.2
 
+env:
+  variables:
+    AWS_DEFAULT_REGION: "us-east-1"
+
 phases:
-  install:
-    runtime-versions:
-      python: 3.8
+  pre_build:
     commands:
-      # Install the AWS CLI using the appropriate package manager
-      - apt-get update                    # For Debian/Ubuntu-based systems
-      - apt-get install -y awscli         # For Debian/Ubuntu-based systems
+      - echo "Setting up custom environment..."
+      # Install Python 3.8
+      - apt-get update
+      - apt-get install -y python3.8
+      # Install any other dependencies you might need
+      # Replace 'your_aws_region' with the AWS region you are using for AWS CLI commands
 
   build:
     commands:
