@@ -8,9 +8,8 @@ phases:
   pre_build:
     commands:
       - echo "Setting up custom environment..."
-      # Install Python 3.8
-      - apt-get update
-      - apt-get install -y python3.8
+      - yum update -y                   # Update package information
+      - yum install -y python38         # Install Python 3.8
       # Install any other dependencies you might need
       # Replace 'your_aws_region' with the AWS region you are using for AWS CLI commands
 
