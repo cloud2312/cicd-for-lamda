@@ -9,6 +9,7 @@ phases:
     commands:
       - echo "Setting up custom environment..."
       - yum update -y                   # Update package information
+      - yum list available | grep python
       - yum install -y python38         # Install Python 3.8
       # Install any other dependencies you might need
       # Replace 'your_aws_region' with the AWS region you are using for AWS CLI commands
